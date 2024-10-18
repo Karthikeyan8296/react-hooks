@@ -1,6 +1,45 @@
+import { useState } from "react";
 import "./App.css";
 import React from "react";
 
 export default function App() {
-  return <div>App</div>;
+  const [add, setAdd] = useState(0);
+  const [color, setcolor] = useState("Red");
+  const [car, setcar] = useState({
+    name: "lonbo",
+    year: "2024",
+    model: "UV-Metal",
+    color: "Black",
+  });
+
+  //Counter
+  const handleClick = () => {
+    setAdd(add + 1);
+  };
+
+  //Toggle
+  const handlecolor = () => {
+    setcolor((prevColor) => (prevColor === "Red" ? "Blue" : "Red"));
+  };
+
+  //State object
+  const handleCar = () => {
+    setcar((prev) => ({ ...prev, model: "main" }));
+  };
+
+  return (
+    <>
+      <h4>{add}</h4>
+      <button onClick={handleClick}>Add</button>
+
+      <h4>My fav color is {color}</h4>
+      <button onClick={handlecolor}>Change color</button>
+
+      <h4>
+        My {car.name} is {car.year} old, it is {car.model} model with{" "}
+        {car.color} color
+      </h4>
+      <button onClick={handleCar}>Change Now</button>
+    </>
+  );
 }
