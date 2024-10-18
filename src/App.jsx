@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import React from "react";
 
@@ -27,6 +27,17 @@ export default function App() {
     setcar((prev) => ({ ...prev, model: "main" }));
   };
 
+  //UseEffect for counter//
+  const [incrc, setincrc] = useState(0);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setincrc((incrc) => incrc + 1);
+    }, 2000);
+  }, [incrc]);
+
+  console.log(incrc);
+
   return (
     <>
       <h4>{add}</h4>
@@ -40,6 +51,8 @@ export default function App() {
         {car.color} color
       </h4>
       <button onClick={handleCar}>Change Now</button>
+
+      <h4>{incrc}</h4>
     </>
   );
 }
